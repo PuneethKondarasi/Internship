@@ -10,7 +10,7 @@ body {
     background-color: black;
 }
 
-.main {
+.netflix {
     background-image: url("../Assets/bg.jpg");
     background-position: center center;
     background-size: max(1200px, 100vw);
@@ -19,7 +19,7 @@ body {
     position: relative;
 }
 
-.main .box {
+.netflix .box {
     height: 644px;
     width: 100%;
     opacity: 0.69;
@@ -120,7 +120,7 @@ nav button {
     gap: 16px;
 }
 
-.main input {
+.netflix input {
     padding: 7px 101px 8px 14px;
     color: white;
     font-size: 12px;

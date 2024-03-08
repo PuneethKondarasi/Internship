@@ -25,7 +25,6 @@ function displayWeather(data) {
     const weatherResult = document.getElementById("weatherResult"); 
     weatherResult.innerHTML = `
         <h2>${data.name}, ${data.sys.country}</h2>
-        <img class="weather-icon" src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="Weather Icon">
         <p>${data.weather[0].description}</p>
         <p>Temperature: ${data.main.temp}°C</p>
         <p>Humidity: ${data.main.humidity}%</p>`;
