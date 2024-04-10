@@ -16,8 +16,8 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <style></style>
   </head>
-
   <body>
     <div class="Home">
       <div class="header">
@@ -26,11 +26,11 @@
         </div>
         <nav>
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#data-visualizations">Data Visualizations</a></li>
-            <li><a href="#filtering-sorting">Filtering & Sorting</a></li>
-            <li><a href="#about-us">About Us</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./data_visualization.html">Data Visualizations</a></li>
+            <li><a href="./Filtering_sorting.html">Filtering & Sorting</a></li>
+            <li><a href="#About_us">About Us</a></li>
+            <li><a href="#Contact-us">Contact</a></li>
           </ul>
         </nav>
       </div>
@@ -38,22 +38,164 @@
         <h1>Welcome to Cricketverse - Dive Deep into Cricket Data</h1>
         <p>Uncover the Game's Pulse with our Cricketverse</p>
       </div>
-      <div class="introduction">
-        <div class="intro-content">
-          <p>
-            Cricketverse is a platform that provides a comprehensive view of
-            cricket data. We offer a wide range of data visualizations that help
-            you understand the game better. Our platform is designed to help you
-            explore the game's pulse and dive deep into the world of cricket
-            statistics.
-          </p>
+      <div class="intro-content">
+        <p>
+          Cricketverse is a platform that provides a comprehensive view of
+          cricket data. We offer a wide range of data visualizations that help
+          you understand the game better. Our platform is designed to help you
+          explore the game's pulse and dive deep into the world of cricket
+          statistics.
+        </p>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card" style="width: 20rem">
+              <img src="./Assets/Data_vis.jpg" />
+              <div class="card-body">
+                <h5 class="card-title">Data Visualizations</h5>
+                <p class="card-text" style="padding-bottom: 24px">
+                  Explore our wide range of data visualizations that help you
+                  understand the game better and uncover hidden insights.
+                </p>
+              </div>
+              <a href="#" class="btn btn-primary">Check it out here</a>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="width: 20rem">
+              <img src="./Assets/Sorting-Filtering.webp" />
+              <div class="card-body">
+                <h5 class="card-title">Filtering and Sorting</h5>
+                <p class="card-text" style="padding-bottom: 44px">
+                  Use our filtering and sorting options to customize your data
+                  view and get the information you need quickly and easily.
+                </p>
+              </div>
+              <a href="#" class="btn btn-primary">Check it out here</a>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="width: 20rem">
+              <img src="./Assets/upcoming_matches.avif" />
+              <div class="card-body">
+                <h5 class="card-title">Upcoming Matches</h5>
+                <p class="card-text" style="padding-bottom: 72px">
+                  Stay updated with the latest cricket matches and get all the
+                  information you need to follow your favorite teams.
+                </p>
+              </div>
+              <a href="#" class="btn btn-primary">Check it out here</a>
+            </div>
+          </div>
         </div>
       </div>
-      <footer>
-        <div class="footer-content">
-          <p>&copy; 2021 Cricketverse. All Rights Reserved.</p>
-        </div>
-      </footer>
+      <div class="About_us" id="About_us">
+        <h2>About Us</h2>
+        <p>
+          Cricketverse is a platform that provides a comprehensive view of
+          cricket data. We offer a wide range of data visualizations that help
+          you understand the game better. Our platform is designed to help you
+          explore the game's pulse and dive deep into the world of cricket
+          statistics.
+        </p>
+
+        <p>
+          Our team is passionate about cricket and data. We believe that data
+          can help us uncover hidden insights and understand the game better. We
+          are committed to providing you with the best cricket data experience
+          and helping you explore the game in new and exciting ways.
+        </p>
+
+        <p>
+          Whether you are a cricket fan, a data enthusiast, or just curious
+          about the game, Cricketverse has something for you. Join us on this
+          journey and explore the world of cricket data like never before.
+        </p>
+
+        <p>
+          We are constantly working to improve our platform and add new features
+          to enhance your experience. If you have any feedback or suggestions,
+          we would love to hear from you. Feel free to reach out to us with any
+          questions or comments you may have.
+        </p>
+
+        <p>
+          Thank you for visiting Cricketverse. We hope you enjoy exploring the
+          world of cricket data with us.
+        </p>
+      </div>
+      <div class="Contact-us" id="Contact-us">
+        <h2>Contact Us</h2>
+        <p>
+          If you have any questions or feedback, feel free to reach out to us.
+          We are always happy to hear from you and help you with any queries you
+          may have.
+        </p>
+        <form>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              aria-describedby="name"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              aria-describedby="email"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="container">
+        <footer class="py-3 my-4">
+          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item">
+              <a href="./index.html" class="nav-link px-2 text-body-secondary"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="./data_visualization.html"
+                class="nav-link px-2 text-body-secondary"
+                >Data Visualizations</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="./Filtering_sorting.html"
+                class="nav-link px-2 text-body-secondary"
+                >Filtering & Sorting</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#About_us" class="nav-link px-2 text-body-secondary"
+                >About Us</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#Contact-us" class="nav-link px-2 text-body-secondary"
+                >Conract</a
+              >
+            </li>
+          </ul>
+          <p class="text-center text-body-secondary">
+            © 2024 Cricketverse, Inc
+          </p>
+        </footer>
+      </div>
     </div>
   </body>
 </html>
