@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Most Wickets Taken in a Career</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h1>Most Wickets Taken in a Career</h1>
+    <button onclick="toggleWicketsChart()">Show Wickets Chart</button>
+    <canvas
+      id="wicketsChart"
+      width="800"
+      height="400"
+      style="display: none"
+    ></canvas>
+
+    <script>
+      const topBowlers = [
+        { player: "Muttiah Muralitharan", wickets: 1347 },
+        { player: "Shane Warne", wickets: 1001 },
+        { player: "Anil Kumble", wickets: 956 },
+        { player: "Glenn McGrath", wickets: 949 },
+        { player: "James Anderson", wickets: 614 },
+        { player: "Courtney Walsh", wickets: 519 },
+        { player: "Stuart Broad", wickets: 517 },
+        { player: "Wasim Akram", wickets: 916 },
+        { player: "Imran Khan", wickets: 544 },
+        { player: "Dennis Lillee", wickets: 892 },
+      ];
+
+      function toggleWicketsChart() {
+        const chartCanvas = document.getElementById("wicketsChart");
+        if (chartCanvas.style.display === "none") {
+          chartCanvas.style.display = "block";
+        } else {
+          chartCanvas.style.display = "none";
+        }
+        generateWicketsChart();
+      }
+
+      function generateWicketsChart() {
+        const players = topBowlers.map((item) => item.player);
+        const wickets = topBowlers.map((item) => item.wickets);
+
+        const ctx = document.getElementById("wicketsChart").getContext("2d");
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: players,
+            datasets: [
+              {
+                label: "Wickets",
+                data: wickets,
+                backgroundColor: "rgba(255, 99, 132, 0.5)",
+                borderColor: "rgba(255, 99, 132, 1)",
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                  },
+                },
+              ],
+            },
+          },
+        });
+      }
+    </script>
+  </body>
+</html>

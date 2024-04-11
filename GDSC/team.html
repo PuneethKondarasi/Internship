@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Performance Across Different Eras</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h1>Team Performance Across Different Eras</h1>
+    <button onclick="toggleLineChart()">Show Line Chart</button>
+    <canvas
+      id="lineChart"
+      width="800"
+      height="400"
+      style="display: none"
+    ></canvas>
+
+    <script>
+      const eraData = {
+        "1980s": {
+          India: 40,
+          Australia: 50,
+          England: 35,
+          "West Indies": 60,
+          Pakistan: 45,
+        },
+        "1990s": {
+          India: 45,
+          Australia: 55,
+          England: 40,
+          "West Indies": 55,
+          Pakistan: 50,
+        },
+        "2000s": {
+          India: 55,
+          Australia: 60,
+          England: 45,
+          "West Indies": 45,
+          Pakistan: 50,
+        },
+        "2010s": {
+          India: 60,
+          Australia: 65,
+          England: 50,
+          "West Indies": 40,
+          Pakistan: 55,
+        },
+        "2020s": {
+          India: 65,
+          Australia: 70,
+          England: 55,
+          "West Indies": 35,
+          Pakistan: 60,
+        },
+      };
+
+      function toggleLineChart() {
+        const chartCanvas = document.getElementById("lineChart");
+        if (chartCanvas.style.display === "none") {
+          chartCanvas.style.display = "block";
+        } else {
+          chartCanvas.style.display = "none";
+        }
+        generateLineChart();
+      }
+
+      function generateLineChart() {
+        const eras = Object.keys(eraData);
+        const teams = Object.keys(eraData[eras[0]]);
+        const datasets = teams.map((team) => {
+          return {
+            label: team,
+            data: eras.map((era) => eraData[era][team]),
+            borderColor: getRandomColor(),
+            fill: false,
+          };
+        });
+
+        const ctx = document.getElementById("lineChart").getContext("2d");
+        new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: eras,
+            datasets: datasets,
+          },
+          options: {
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                  },
+                },
+              ],
+            },
+          },
+        });
+      }
+
+      function getRandomColor() {
+        return "#" + Math.floor(Math.random() * 16777215).toString(16);
+      }
+    </script>
+  </body>
+</html>

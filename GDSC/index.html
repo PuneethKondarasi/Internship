@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cricketverse</title>
     <link rel="stylesheet" href="styles.css" />
     <link
@@ -16,15 +15,14 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <style></style>
   </head>
   <body>
-    <div class="Home">
+    <div class="Page1">
       <div class="header">
         <div class="logo">
           <h1>Cricketverse</h1>
         </div>
-        <nav>
+        <nav class="options">
           <ul>
             <li><a href="./index.html">Home</a></li>
             <li><a href="./data_visualization.html">Data Visualizations</a></li>
@@ -47,6 +45,8 @@
           statistics.
         </p>
       </div>
+    </div>
+    <div class="Page2">
       <div class="container">
         <div class="row">
           <div class="col">
@@ -59,7 +59,9 @@
                   understand the game better and uncover hidden insights.
                 </p>
               </div>
-              <a href="#" class="btn btn-primary">Check it out here</a>
+              <a href="./data_visualization.html" class="btn btn-primary"
+                >Check it out here</a
+              >
             </div>
           </div>
           <div class="col">
@@ -72,7 +74,9 @@
                   view and get the information you need quickly and easily.
                 </p>
               </div>
-              <a href="#" class="btn btn-primary">Check it out here</a>
+              <a href="./Filtering_sorting.html" class="btn btn-primary"
+                >Check it out here</a
+              >
             </div>
           </div>
           <div class="col">
@@ -90,6 +94,8 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="Page3">
       <div class="About_us" id="About_us">
         <h2>About Us</h2>
         <p>
@@ -99,32 +105,30 @@
           explore the game's pulse and dive deep into the world of cricket
           statistics.
         </p>
-
         <p>
           Our team is passionate about cricket and data. We believe that data
           can help us uncover hidden insights and understand the game better. We
           are committed to providing you with the best cricket data experience
           and helping you explore the game in new and exciting ways.
         </p>
-
         <p>
           Whether you are a cricket fan, a data enthusiast, or just curious
           about the game, Cricketverse has something for you. Join us on this
           journey and explore the world of cricket data like never before.
         </p>
-
         <p>
           We are constantly working to improve our platform and add new features
           to enhance your experience. If you have any feedback or suggestions,
           we would love to hear from you. Feel free to reach out to us with any
           questions or comments you may have.
         </p>
-
         <p>
           Thank you for visiting Cricketverse. We hope you enjoy exploring the
           world of cricket data with us.
         </p>
       </div>
+    </div>
+    <div class="Page4">
       <div class="Contact-us" id="Contact-us">
         <h2>Contact Us</h2>
         <p>
@@ -132,9 +136,9 @@
           We are always happy to hear from you and help you with any queries you
           may have.
         </p>
-        <form>
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
+        <form id="contact-form">
+          <div class="name">
+            <label for="name" class="form-label">Name : </label>
             <input
               type="text"
               class="form-control"
@@ -142,8 +146,9 @@
               aria-describedby="name"
             />
           </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
+          <br />
+          <div class="email">
+            <label for="email" class="form-label">Email : </label>
             <input
               type="email"
               class="form-control"
@@ -151,13 +156,21 @@
               aria-describedby="email"
             />
           </div>
-          <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea class="form-control" id="message" rows="3"></textarea>
+          <br />
+          <div class="message">
+            <label for="message" class="form-label">Message : </label>
+            <textarea id="message" rows="3" cols="10"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <div class="buttons">
+            <button type="button" class="btn btn-primary" id="submit-btn">
+              Submit
+            </button>
+          </div>
+          <p class="jsInput" id="jsInput"></p>
         </form>
       </div>
+    </div>
+    <div class="footer">
       <div class="container">
         <footer class="py-3 my-4">
           <ul class="nav justify-content-center border-bottom pb-3 mb-3">
@@ -187,7 +200,7 @@
             </li>
             <li class="nav-item">
               <a href="#Contact-us" class="nav-link px-2 text-body-secondary"
-                >Conract</a
+                >Contact</a
               >
             </li>
           </ul>
@@ -197,5 +210,6 @@
         </footer>
       </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>

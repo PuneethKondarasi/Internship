@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Highest Strike Rates in T20</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h1>Highest Strike Rates in T20</h1>
+    <button onclick="toggleScatterPlot()">Toggle Scatter Plot</button>
+    <canvas
+      id="scatterPlot"
+      width="800"
+      height="400"
+      style="display: none"
+    ></canvas>
+
+    <script>
+      // Mock data for players with the highest strike rates in T20
+      const topStrikeRates = [
+        { player: "Andre Russell", strikeRate: 171.29, runs: 5361 },
+        { player: "Chris Gayle", strikeRate: 151.03, runs: 13000 },
+        { player: "AB de Villiers", strikeRate: 151.23, runs: 8607 },
+        { player: "Glenn Maxwell", strikeRate: 156.47, runs: 2837 },
+        { player: "David Warner", strikeRate: 141.54, runs: 9421 },
+        { player: "Brendon McCullum", strikeRate: 136.21, runs: 9922 },
+        { player: "Virender Sehwag", strikeRate: 145.39, runs: 2728 },
+        { player: "Shane Watson", strikeRate: 137.91, runs: 8583 },
+        { player: "Kieron Pollard", strikeRate: 151.08, runs: 10522 },
+        { player: "Colin Munro", strikeRate: 156.44, runs: 1675 },
+      ];
+
+      // Function to toggle the visibility of the scatter plot
+      function toggleScatterPlot() {
+        const chartCanvas = document.getElementById("scatterPlot");
+        if (chartCanvas.style.display === "none") {
+          // Show the scatter plot
+          chartCanvas.style.display = "block";
+        } else {
+          // Hide the scatter plot
+          chartCanvas.style.display = "none";
+        }
+        generateScatterPlot(); // Regenerate the plot every time the button is clicked
+      }
+
+      // Function to generate the scatter plot
+      function generateScatterPlot() {
+        // Extract player names, strike rates, and runs for the plot
+        const players = topStrikeRates.map((item) => item.player);
+        const strikeRates = topStrikeRates.map((item) => item.strikeRate);
+        const runs = topStrikeRates.map((item) => item.runs);
+
+        // Create a scatter plot using Chart.js
+        const ctx = document.getElementById("scatterPlot").getContext("2d");
+        new Chart(ctx, {
+          type: "scatter",
+          data: {
+            datasets: [
+              {
+                label: "Players",
+                data: topStrikeRates.map((item) => ({
+                  x: item.strikeRate,
+                  y: item.runs,
+                })),
+                backgroundColor: "rgba(255, 99, 132, 0.5)",
+                borderColor: "rgba(255, 99, 132, 1)",
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              xAxes: [
+                {
+                  type: "linear",
+                  position: "bottom",
+                  scaleLabel: {
+                    display: true,
+                    labelString: "Strike Rate",
+                  },
+                },
+              ],
+              yAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: "Total Runs Scored",
+                  },
+                },
+              ],
+            },
+          },
+        });
+      }
+    </script>
+  </body>
+</html>

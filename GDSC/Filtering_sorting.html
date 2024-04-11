@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cricket Match Filter</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+      }
+      .filter-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .filter-row label {
+        font-weight: bold;
+        margin-right: 10px;
+      }
+      .filter-row input[type="text"],
+      .filter-row select {
+        padding: 8px;
+        font-size: 16px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        margin-right: 10px;
+      }
+      .filter-row button {
+        padding: 8px 16px;
+        font-size: 16px;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+      .matches-list {
+        list-style-type: none;
+        padding: 0;
+      }
+      .matches-list li {
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cricket Match Filter</h1>
+    <div class="filter-row">
+      <label for="teamName">Enter Team Name:</label>
+      <input type="text" id="teamName" placeholder="Enter team name..." />
+    </div>
+    <div class="filter-row">
+      <label for="matchType">Select Match Type:</label>
+      <select id="matchType">
+        <option value="Test">Test</option>
+        <option value="ODI">ODI</option>
+        <option value="T20">T20</option>
+      </select>
+    </div>
+    <div class="filter-row">
+      <label for="venue">Enter Venue:</label>
+      <input type="text" id="venue" placeholder="Enter venue..." />
+    </div>
+    <div class="filter-row">
+      <button onclick="filterMatches()">Filter Matches</button>
+    </div>
+    <ul id="matchesList" class="matches-list"></ul>
+
+    <script>
+      function fetchCricketData() {
+        const API_KEY = "b7033a39-9bfe-413e-9a16-23548d9434f9s";
+        const apiUrl = `http://cricapi.com/api/matches?apikey=${API_KEY}`;
+
+        return fetch(apiUrl)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Failed to fetch cricket data");
+            }
+            return response.json();
+          })
+          .catch((error) => {
+            console.error("Error fetching cricket data:", error);
+            return null;
+          });
+      }
+
+      function filterMatches() {
+        const teamName = document
+          .getElementById("teamName")
+          .value.toLowerCase();
+        const matchType = document.getElementById("matchType").value;
+        const venue = document.getElementById("venue").value.toLowerCase();
+        fetchCricketData().then((cricketData) => {
+          if (cricketData) {
+            const filteredMatches = cricketData.matches
+              .filter((match) => {
+                const team1Includes = match["team-1"]
+                  .toLowerCase()
+                  .includes(teamName);
+                const team2Includes = match["team-2"]
+                  .toLowerCase()
+                  .includes(teamName);
+                const venueIncludes = match.venue.toLowerCase().includes(venue);
+                return team1Includes || team2Includes || venueIncludes;
+              })
+              .filter((match) => {
+                return match.type.toLowerCase() === matchType.toLowerCase();
+              })
+              .filter((match) => {
+                if (startDate && endDate) {
+                  return (
+                    new Date(match.date) >= new Date(startDate) &&
+                    new Date(match.date) <= new Date(endDate)
+                  );
+                } else {
+                  return true;
+                }
+              });
+            const sortedMatches = filteredMatches.sort((a, b) => {
+              return new Date(a.date) - new Date(b.date);
+            });
+            displayMatches(sortedMatches);
+          } else {
+            document.getElementById("matchesList").innerHTML =
+              "No cricket data available.";
+          }
+        });
+      }
+
+      function displayMatches(matches) {
+        const matchesList = document.getElementById("matchesList");
+        matchesList.innerHTML = "";
+
+        if (matches.length === 0) {
+          matchesList.innerHTML =
+            "No matches found for the specified criteria.";
+        } else {
+          matches.forEach((match) => {
+            const li = document.createElement("li");
+            li.textContent = `Date: ${match.date}, Team 1: ${match["team-1"]}, Team 2: ${match["team-2"]}, Venue: ${match.venue}, Type: ${match.type}`;
+            matchesList.appendChild(li);
+          });
+        }
+      }
+    </script>
+  </body>
+</html>

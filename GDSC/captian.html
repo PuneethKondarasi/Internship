@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Most Successful Captain-Vice Captain Combinations</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h1>Most Successful Captain-Vice Captain Combinations</h1>
+    <button onclick="toggleBarChart()">Show Bar Chart</button>
+    <canvas
+      id="barChart"
+      width="800"
+      height="400"
+      style="display: none"
+    ></canvas>
+
+    <script>
+      const successfulCombinations = [
+        { combination: "Dhoni-Kohli", wins: 50 },
+        { combination: "Ponting-Gilchrist", wins: 45 },
+        { combination: "Vaughan-Pieterson", wins: 42 },
+        { combination: "Ganguly-Tendulkar", wins: 48 },
+        { combination: "Smith-Warner", wins: 47 },
+        { combination: "Williamson-Taylor", wins: 44 },
+        { combination: "Holder-Bravo", wins: 39 },
+        { combination: "Root-Buttler", wins: 41 },
+        { combination: "Kohli-Rohit", wins: 51 },
+        { combination: "Stokes-Buttler", wins: 43 },
+      ];
+
+      function toggleBarChart() {
+        const chartCanvas = document.getElementById("barChart");
+        if (chartCanvas.style.display === "none") {
+          chartCanvas.style.display = "block";
+        } else {
+          chartCanvas.style.display = "none";
+        }
+        generateBarChart();
+      }
+      function generateBarChart() {
+        const combinations = successfulCombinations.map(
+          (item) => item.combination
+        );
+        const wins = successfulCombinations.map((item) => item.wins);
+        const ctx = document.getElementById("barChart").getContext("2d");
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: combinations,
+            datasets: [
+              {
+                label: "Wins",
+                data: wins,
+                backgroundColor: "rgba(75, 192, 192, 0.5)",
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                  },
+                },
+              ],
+            },
+          },
+        });
+      }
+    </script>
+  </body>
+</html>

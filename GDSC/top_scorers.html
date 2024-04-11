@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top Run Scorers All Time</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h1>Top Run Scorers All Time</h1>
+    <button onclick="toggleBarChart()">Show Bar Chart</button>
+    <canvas
+      id="runScorersChart"
+      width="800"
+      height="400"
+      style="display: none"
+    ></canvas>
+    <script>
+      const topRunScorers = [
+        { player: "Sachin Tendulkar", runs: 18426 },
+        { player: "Ricky Ponting", runs: 13704 },
+        { player: "Kumar Sangakkara", runs: 14234 },
+        { player: "Brian Lara", runs: 11953 },
+        { player: "Jacques Kallis", runs: 11579 },
+        { player: "Rahul Dravid", runs: 13288 },
+        { player: "Virat Kohli", runs: 12169 },
+        { player: "Mahela Jayawardene", runs: 11837 },
+        { player: "Sourav Ganguly", runs: 11363 },
+        { player: "Hashim Amla", runs: 9282 },
+      ];
+
+      function toggleBarChart() {
+        const chartCanvas = document.getElementById("runScorersChart");
+        if (chartCanvas.style.display === "none") {
+          chartCanvas.style.display = "block";
+        } else {
+          chartCanvas.style.display = "none";
+        }
+        generateBarChart();
+      }
+
+      function generateBarChart() {
+        const players = topRunScorers.map((item) => item.player);
+        const runs = topRunScorers.map((item) => item.runs);
+        const ctx = document.getElementById("runScorersChart").getContext("2d");
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: players,
+            datasets: [
+              {
+                label: "Runs",
+                data: runs,
+                backgroundColor: "rgba(54, 162, 235, 0.5)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                  },
+                },
+              ],
+            },
+          },
+        });
+      }
+    </script>
+  </body>
+</html>

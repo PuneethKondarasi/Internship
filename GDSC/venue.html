@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Impact of Venue on Batting Averages</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h1>Impact of Venue on Batting Averages</h1>
+    <button onclick="toggleLineChart()">Show Line Chart</button>
+    <canvas
+      id="lineChart"
+      width="800"
+      height="400"
+      style="display: none"
+    ></canvas>
+
+    <script>
+      const venueImpactData = {
+        venue1: {
+          battingFirst: [25, 30, 27, 32, 28],
+          battingSecond: [23, 27, 24, 29, 25],
+        },
+        venue2: {
+          battingFirst: [28, 32, 29, 34, 30],
+          battingSecond: [26, 30, 27, 32, 28],
+        },
+        venue3: {
+          battingFirst: [30, 34, 31, 36, 32],
+          battingSecond: [28, 32, 29, 34, 30],
+        },
+        venue4: {
+          battingFirst: [27, 31, 28, 33, 29],
+          battingSecond: [25, 29, 26, 31, 27],
+        },
+        venue5: {
+          battingFirst: [29, 33, 30, 35, 31],
+          battingSecond: [27, 31, 28, 33, 29],
+        },
+      };
+
+      function toggleLineChart() {
+        const chartCanvas = document.getElementById("lineChart");
+        if (chartCanvas.style.display === "none") {
+          chartCanvas.style.display = "block";
+        } else {
+          chartCanvas.style.display = "none";
+        }
+        generateLineChart();
+      }
+
+      function generateLineChart() {
+        const venues = Object.keys(venueImpactData);
+        const labels = ["Match 1", "Match 2", "Match 3", "Match 4", "Match 5"];
+        const datasets = venues.map((venue) => {
+          return {
+            label: venue,
+            data: venueImpactData[venue].battingFirst,
+            borderColor: getRandomColor(),
+            fill: false,
+          };
+        });
+
+        const ctx = document.getElementById("lineChart").getContext("2d");
+        new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: labels,
+            datasets: datasets,
+          },
+          options: {
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                  },
+                },
+              ],
+            },
+          },
+        });
+      }
+
+      function getRandomColor() {
+        return "#" + Math.floor(Math.random() * 16777215).toString(16);
+      }
+    </script>
+  </body>
+</html>
